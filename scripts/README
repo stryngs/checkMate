@@ -1,0 +1,16 @@
+# The following variables must be created accordingly prior to closeOut--
+  - $status  --  Explained below
+  - $oVal    --  Output details that should be placed in Finding Details
+  - $cVal    --  Comment details that should be placed in Comments
+  - $eLen    --  Anything other than 0 signifies additional back-end checks
+    - lib/shared.sh for details
+
+# Never use : as string input for:
+  - $oVal
+  - $cVal
+
+# For $status, allowed options are:
+  - Not_Reviewed
+  - Open
+  - NotAFinding
+  - Not_Applicable
