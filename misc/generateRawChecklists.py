@@ -27,8 +27,6 @@ fMenu = OT.gnr.fileMenu(fileType = 'ckl')
 with open('hosts.lst') as iFile:
     hostList = iFile.read().splitlines()
 
-
-
 ## Results query
 q = resDB.execute("""
                   SELECT * FROM vuln_per_stig;
@@ -67,7 +65,7 @@ for k, v in sg.templateDict.items():
 mList = []
 
 ## Rip through and generate CKLs
-print ('Generating CKLs in output/')
+print ('Generating CKLs in generatedCKLs/')
 for k, v in sg.templateDict.items():
     ourKey = v
 
@@ -94,7 +92,7 @@ for k, v in sg.templateDict.items():
                     else:
                         suffix = ''
 
-                    tree.write('output/' + host + '_' + sType + suffix + '.ckl')
+                    tree.write('generatedCKLs/' + host + '_' + sType + suffix + '.ckl')
 print('Done!\n')
 
 ## Cleanup

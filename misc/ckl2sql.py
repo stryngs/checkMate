@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Take CKL(s) and change them over to a SQLite3 format
+
+Useful if CKLs are done 1:1 versus 1:many
 """
 
 import officeTasks as OT
@@ -141,8 +143,8 @@ for v in all_vDicts:
     stigList.append(tuple(tmpList))
 
 ## Lazy csv & sql
-OT.csv.csvGen('results.csv', headers = cHeaders, rows = stigList, encoding = 'utf-8')
-con = OT.csv.csv2sql('results.csv', 'results', 'results.sqlite3')
+OT.csv.csvGen('ckl2sql_results.csv', headers = cHeaders, rows = stigList, encoding = 'utf-8')
+con = OT.csv.csv2sql('ckl2sql_results.csv', 'results', 'ckl2sql_results.sqlite3')
 db = con.cursor()
 db.execute("""
            CREATE TABLE 'vuln_per_stig' AS
@@ -155,4 +157,4 @@ con.commit()
 con.close()
 
 ## Cleanup
-OT.gnr.sweep('results.csv')
+OT.gnr.sweep('ckl2sql_results.csv')
